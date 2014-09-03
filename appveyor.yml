@@ -70,4 +70,6 @@ artifacts:
 
 on_success:
   # Upload the generated wheel package to Rackspace
-  - "python -m wheelhouse_uploader --local-folder=dist sklearn-wheelhouse"
+  # On Windows, Apache Libcloud cannot find a standard CA cert bundle so we
+  # disable the ssl checks.
+  - "python -m wheelhouse_uploader --no-ssl-check --local-folder=dist sklearn-wheelhouse"
